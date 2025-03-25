@@ -1,11 +1,13 @@
 import SearchShoe from "@/app/components/SearchShoe";
 import { getListProductByKeyWord } from "@/app/service/shoeApi";
-import { IShoeType } from "@/app/types/shoe";
-import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 
-const SearchPage = async ({ searchParams }) => {
-  const { tenGiay } = searchParams;
+const SearchPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ tenGiay: string }>;
+}) => {
+  const { tenGiay } = await searchParams;
   console.log("tenGiay: ", tenGiay);
 
   const listInitShoe = await getListProductByKeyWord(tenGiay);

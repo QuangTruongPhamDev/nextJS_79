@@ -4,7 +4,7 @@ import React from "react";
 import { getListProductByKeyWord } from "@/app/service/shoeApi";
 import { IShoeType } from "@/app/types/shoe";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import _ from "lodash";
 
 const SearchShoe = ({
@@ -13,7 +13,7 @@ const SearchShoe = ({
   initDataListShoe: IShoeType[];
 }) => {
   const [listShoe, setListShoe] = useState<IShoeType[]>(initDataListShoe);
-  const searchParams = useSearchParams(); // đọc dữ liệu từ url
+  //   const searchParams = useSearchParams(); // đọc dữ liệu từ url
   const router = useRouter(); // thay đổi dữ liệu trên url
 
   const handleRenderListShoe = _.debounce(async (keyWord: string) => {
@@ -26,8 +26,10 @@ const SearchShoe = ({
     }
   }, 500); // 500 ~ 500 mili giây
 
-  const handleOnChangeSearch = async (e) => {
-    let value = e.target.value;
+  const handleOnChangeSearch = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = e.target.value;
 
     handleRenderListShoe(value);
   };
@@ -49,7 +51,7 @@ const SearchShoe = ({
       </div>
 
       <div className="grid grid-cols-4 gap-4">
-        {listShoe?.map((shoe, index) => (
+        {listShoe?.map((shoe) => (
           <div key={shoe.id}>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <a href="#">

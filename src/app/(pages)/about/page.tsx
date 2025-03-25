@@ -18,7 +18,7 @@ export default function About() {
 
   return (
     <div className="grid grid-cols-4 gap-4">
-      {listShoe?.map((shoe, index) => (
+      {listShoe?.map((shoe) => (
         <div key={shoe.id}>
           <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
