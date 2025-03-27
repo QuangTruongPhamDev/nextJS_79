@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export const metadata = {
-  title: "Shoes App - Home",
+  title: "Shoes App - Trường",
   description:
     "Explore our wide range of shoes with the best prices and quality.",
   openGraph: {
